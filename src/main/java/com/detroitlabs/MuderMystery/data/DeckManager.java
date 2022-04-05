@@ -11,18 +11,14 @@ import java.util.Random;
 
 @Component
 public class DeckManager {
-//List of people cards
-//List of weapon cards
-//List of Location cards
+
 //List for Player
 //List for computer
 //List for envelope/solution- use random to select from each list (ppl, wepn, loct)
 //List for ALL_CARDS- which will have all 3 lists brought into this one
 //List of all cards including the ones in the envelope. ?
 
-//    List<Card> peopleCards = new ArrayList<>();
-//    List<Card> weaponCards = new ArrayList<>();
-//    List<Card> locationCards = new ArrayList<>();
+
     List<Card> drawPile = new ArrayList<>();
     List<Card> player1 = new ArrayList<>();
     List<Card> computer1 = new ArrayList<>();
@@ -64,6 +60,17 @@ public class DeckManager {
             new Card("Ford Lanes Bowling Alley", "l", "bowling"),
             new Card("Sandcreek Library", "l", "library"));
 
-
+public List<Card> createEnvelope (){
+    Card activePeopleCard= peopleCards.get(rand.nextInt(6));
+    envelope.add(0, activePeopleCard);
+    peopleCards.remove(activePeopleCard);
+    Card activeWeaponCard= weaponCards.get(rand.nextInt(6));
+    envelope.add(1, activeWeaponCard);
+    weaponCards.remove(activeWeaponCard);
+    Card activeLocationCard= locationCards.get(rand.nextInt(9));
+    envelope.add(2, activeLocationCard);
+    locationCards.remove(activeLocationCard);
+    return envelope;
+}
 
 }
