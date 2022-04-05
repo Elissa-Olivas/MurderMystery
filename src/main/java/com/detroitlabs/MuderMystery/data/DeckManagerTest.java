@@ -8,13 +8,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DeckManagerTest {
-//
-//    @Test
-//    void shouldCreateEnvelope() {
-//        DeckManager testEnvelope = new DeckManager();
-//
-//        List<Card> result = testEnvelope.createEnvelope();
-//
-//        assertTrue(result, ;
-//    }
+
+    @Test    //FAIL
+    void shouldCreateEnvelope() {
+        DealManager testEnvelope = new DealManager();
+        List<Card> testList;
+        for (Card card : testEnvelope.createEnvelope()) {
+           String result = card.getCardName();
+            assertEquals(result, "Harley Quinn");
+        }
+    }
 }

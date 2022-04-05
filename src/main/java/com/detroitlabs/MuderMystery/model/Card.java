@@ -1,5 +1,7 @@
 package com.detroitlabs.MuderMystery.model;
 
+import java.util.List;
+
 public class Card {
     private String cardName;
     private String identifier;    //w for weapon, p for people, L for location
@@ -34,4 +36,5 @@ public class Card {
     public void setPicName(String picName) {
         this.picName = picName;
     }
+
 }

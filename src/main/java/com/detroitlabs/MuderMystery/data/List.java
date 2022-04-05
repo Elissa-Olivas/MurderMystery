@@ -1,5 +1,8 @@
 package com.detroitlabs.MuderMystery.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class List {
     private Integer id;
     private Integer order;
@@ -10,6 +13,7 @@ public class List {
     private Boolean favorite;
     private Integer sync_id;
     private String url;
+
 
     public int getId() {
         return id;
