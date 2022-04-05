@@ -16,9 +16,6 @@ public class DeckController {
     @Autowired
     DealManager dealer = new DealManager();
 
-    @Autowired
-    List list = new List();
-
 //    @RequestMapping("/")
 //    public String displayHomepage(){
 //        dealer.clearDeck();
@@ -26,10 +23,4 @@ public class DeckController {
 //        return "home";
 //    }
 
-    @RequestMapping("/")
-    public String displayListServiceDetails(ModelMap modelMap) {
-        List listService = ListService.fetchListData();
-        modelMap.put("listService", listService);
-        return "home";
-    }
 }
