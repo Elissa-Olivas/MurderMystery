@@ -18,13 +18,13 @@ public class DeckController {
     @Autowired
     DealManager dealer = new DealManager();
 
-    //    @RequestMapping("/")
-//    public String displayHomepage(){
-//        dealer.clearDeck();
-//        dealer.dealHands();
-//        return "home";
-//    }
-    @RequestMapping("/")
+        @RequestMapping("/")
+    public String displayHomepage(){
+        dealer.clearDeck();
+        dealer.dealHands();
+        return "home";
+    }
+    @RequestMapping("/player1")
     public String displayListServiceDetails(ModelMap modelMap) throws IOException {
         List listService = ListService.fetchListData();
         modelMap.put("order", listService.getOrder());
@@ -33,6 +33,6 @@ public class DeckController {
         modelMap.put("count", listService.getComment_count());
         modelMap.put("syncID", listService.getSync_id());
         modelMap.put("url", listService.getUrl());
-        return "home";
+        return "player1";
     }
 }

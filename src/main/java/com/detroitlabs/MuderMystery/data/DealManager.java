@@ -121,18 +121,50 @@ public class DealManager {
         return null;
     }
 
-//    public String checkEnvelopeMatch() {               //method to match accuse with envelope
-//        if (player1.size() == 0)
-//            return 1;
-//        else if (player2.size() == 0)
-//            return 2;
-//        else if (player3.size() == 0)
-//            return 3;
-//        else
-//            return 0;
-//    }
-//
-//    public int checkNextHandMatch() {          //method to match suggestion with nextplayers cards
-//        return 0;
-//    }
+    public String checkEnvelopeMatch() {               //method to match accuse with envelope
+        if ((userInput.getGuessPeopleCard().equals(envelope.get(0)) && (userInput.getGuessWeaponCard().equals(envelope.get(1))
+                && (userInput.getGuessLocationCard().equals(envelope.get(2))))))
+            return "Match found, You Win";
+        else
+            return "No Match Found, You Lose";
+    }
+
+    public Card checkNextHandMatch() {          //method to match suggestion with nextplayers cards
+        List<Card> compareNextHandCards = new ArrayList<>();
+        Random random = new Random();
+        boolean matchFound;
+        while (matchFound = false) {
+            for (int i = 0; i < 6; i++) {
+                if ((userInput.getGuessPeopleCard().equals(computer1.get(i)))) {
+                    compareNextHandCards.add(computer1.get(i));
+                }
+                if ((userInput.getGuessWeaponCard().equals(computer1.get(i)))) {
+                    compareNextHandCards.add(computer1.get(i));
+                }
+                if ((userInput.getGuessLocationCard().equals(computer1.get(i)))) {
+                    compareNextHandCards.add(computer1.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+            for (int i = 0; i < 6; i++) {
+                if ((userInput.getGuessPeopleCard().equals(computer2.get(i)))) {
+                    compareNextHandCards.add(computer2.get(i));
+                }
+                if ((userInput.getGuessWeaponCard().equals(computer2.get(i)))) {
+                    compareNextHandCards.add(computer2.get(i));
+                }
+                if ((userInput.getGuessLocationCard().equals(computer2.get(i)))) {
+                    compareNextHandCards.add(computer2.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+        }
+        return null;
+    }
 }
