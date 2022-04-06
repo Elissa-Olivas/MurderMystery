@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class List {
-    private Integer id;
     private Integer order;
     private Integer color;
     private String name;
@@ -15,13 +14,6 @@ public class List {
     private String url;
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Integer getOrder() {
         return order;
