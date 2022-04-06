@@ -1,8 +1,4 @@
-.main_content {
-    background-image: url("/images/Game/murderhome.jpeg");
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 button{
     font-size: 24px;
     border-radius: 12px;
@@ -17,6 +13,9 @@ body {
     justify-content: center;
     height: 100vh;
     background: linear-gradient(45deg, #ea4f4c 0%, #6d0019 100%);
+    background-image: url("/images/Game/murderhome.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 body .signature {
     font-style: italic;
