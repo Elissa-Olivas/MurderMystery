@@ -10,7 +10,15 @@ import java.util.List;
 
 @Component
 public class DealManager {
+    private int die[] = {1, 2, 3, 4, 5, 6, 7};
 
+    public int[] getDie() {
+        return die;
+    }
+
+    public void setDie(int[] die) {
+        this.die = die;
+    }
 
     UserInput userInput = new UserInput();
 
@@ -19,6 +27,7 @@ public class DealManager {
     List<Card> computer1 = new ArrayList<>();
     List<Card> computer2 = new ArrayList<>();
     List<Card> envelope = new ArrayList<>();
+    List<Card> compareNextHandCards = new ArrayList<>();
     Random rand = new Random();
 
 
@@ -108,6 +117,12 @@ public class DealManager {
     }
 
 
+    //reset CompareNextHandCards
+    public void clearCompareHand() {
+        compareNextHandCards.clear();
+    }
+
+
     public List<Card> getPlayerHand(int player) {
         if (player == 1) {
             return player1;
@@ -129,8 +144,27 @@ public class DealManager {
             return "No Match Found, You Lose";
     }
 
-    public Card checkNextHandMatch() {          //method to match suggestion with nextplayers cards
-        List<Card> compareNextHandCards = new ArrayList<>();
+    //method to roll die
+    public void rollDie() {
+        int dieResult;
+        dieResult = rand.nextInt(); //randomly selecting dieResult
+
+        if (dieResult == 7) {
+            checkNextHandMatchAll(); //start checkNextHandAll method
+        } else if (dieResult == 1 || dieResult == 4) {
+            checkNextHandMatchPeople(); //start checkNextHandPeople method
+        } else if (dieResult == 2 || dieResult == 5) {
+            checkNextHandMatchWeapon(); //start checkNextHandWeapon method
+        } else if (dieResult == 3 || dieResult == 6) {
+            checkNextHandMatchLocation(); //start checkNextHandLocation method
+        } else {
+            return;
+        }
+    }
+
+
+    public Card checkNextHandMatchAll() {        //method to match suggestion with nextplayers cards if rolled 7
+
         Random random = new Random();
         boolean matchFound;
         while (matchFound = false) {
@@ -156,6 +190,88 @@ public class DealManager {
                 if ((userInput.getGuessWeaponCard().equals(computer2.get(i)))) {
                     compareNextHandCards.add(computer2.get(i));
                 }
+                if ((userInput.getGuessLocationCard().equals(computer2.get(i)))) {
+                    compareNextHandCards.add(computer2.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+        }
+        return null;
+    }
+
+    public Card checkNextHandMatchPeople() {        //method to match suggestion with nextplayers cards if rolled 1 or 4
+
+        Random random = new Random();
+        boolean matchFound;
+        while (matchFound = false) {
+            for (int i = 0; i < 6; i++) {
+                if ((userInput.getGuessPeopleCard().equals(computer1.get(i)))) {
+                    compareNextHandCards.add(computer1.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+            for (int i = 0; i < 6; i++) {
+                if ((userInput.getGuessPeopleCard().equals(computer2.get(i)))) {
+                    compareNextHandCards.add(computer2.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+        }
+        return null;
+    }
+
+    public Card checkNextHandMatchWeapon() {        //method to match suggestion with nextplayers cards if rolled 2 or 5
+
+        Random random = new Random();
+        boolean matchFound;
+        while (matchFound = false) {
+            for (int i = 0; i < 6; i++) {
+                if ((userInput.getGuessWeaponCard().equals(computer1.get(i)))) {
+                    compareNextHandCards.add(computer1.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+            for (int i = 0; i < 6; i++) {
+                if ((userInput.getGuessWeaponCard().equals(computer2.get(i)))) {
+                    compareNextHandCards.add(computer2.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+        }
+        return null;
+    }
+
+    public Card checkNextHandMatchLocation() {        //method to match suggestion with nextplayers cards if rolled 3 or 6
+
+        Random random = new Random();
+        boolean matchFound;
+        while (matchFound = false) {
+            for (int i = 0; i < 6; i++) {
+
+                if ((userInput.getGuessLocationCard().equals(computer1.get(i)))) {
+                    compareNextHandCards.add(computer1.get(i));
+                }
+                if (compareNextHandCards.size() > 0) {
+                    matchFound = true;
+                }
+                return compareNextHandCards.get(random.nextInt(3));
+            }
+            for (int i = 0; i < 6; i++) {
                 if ((userInput.getGuessLocationCard().equals(computer2.get(i)))) {
                     compareNextHandCards.add(computer2.get(i));
                 }
