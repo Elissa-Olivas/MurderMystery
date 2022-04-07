@@ -1,10 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" th:href="@{/css.css}"/>
+    <title>Murder Mystery-Results</title>
 </head>
 <body>
-
+<nav class="navigationWrapper">
+    <div class="logoWrapper">
+        <span class="stylish">Murder</span>
+        <span class="logo">Durdur</span>
+    </div>
+    <ul class="navigation">
+        <li class="parent"><a class="link" href="/">Home</a></li>
+        <li class="parent"><a class="link" href="#">About</a></li>
+    </ul>
+</nav>
+<form action="results" method="GET">
+    <div>
+        <label for="accusePerson">Choose a Person</label>
+        <select name="accusePerson" id="accusePerson">
+            <option value="Kool Aid Man">Kool Aid Man</option>
+            <option value="Chowder">Chowder</option>
+            <option value="Buzz Lightyear">Buzz Lightyear</option>
+            <option value="Grunkle Stan">Grunkle Stan</option>
+            <option value="Harley Quinn">Harley Quinn</option>
+            <option value="Mike Myers">Mike Myers</option>
+        </select>
+    </div>
+    <div>
+        <label for="accuseWeapon">Choose a Weapon</label>
+        <select name="accuseWeapon" id="accuseWeapon">
+            <option value="Arsenic">Arsenic</option>
+            <option value="Bowling Ball">Bowling Ball</option>
+            <option value="Prosthetic Leg">Prosthetic Leg</option>
+            <option value="Pillow">Pillow</option>
+            <option value="Plunger">Plunger</option>
+            <option value="Rope">Rope</option>
+        </select>
+    </div>
+    <div>
+        <label for="accuseLocation">Choose a Location</label>
+        <select name="accuseLocation" id="accuseLocation">
+            <option value="Bowling Alley">Bowling Alley</option>
+            <option value="Garden of the Gods">Garden of the Gods</option>
+            <option value="Ghost Mines">Ghost Mines</option>
+            <option value="Detroit River Front">Detroit River Front</option>
+            <option value="The Henry Ford Museum">The Henry Ford Museum</option>
+            <option value="Gunnison National Forest">Gunnison National Forest</option>
+            <option value="Odyssey Gastropub">Odyssey Gastropub</option>
+            <option value="Cheyenne Mountain Zoo">Cheyenne Mountain Zoo</option>
+            <option value="Sandcreek Library">Sandcreek Library</option>
+        </select>
+    </div>
+    <button type="submit">Submit Accusation</button>
+</form>
 </body>
 </html>

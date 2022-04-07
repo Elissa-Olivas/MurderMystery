@@ -22,6 +22,15 @@ public class DealManager {
 
     UserInput userInput = new UserInput();
 
+
+    public UserInput getUserInput() {
+        return userInput;
+    }
+
+    public void setUserInput(UserInput userInput) {
+        this.userInput = userInput;
+    }
+
     List<Card> allCards = new ArrayList<>();
     List<Card> player1 = new ArrayList<>();
     List<Card> computer1 = new ArrayList<>();
@@ -38,6 +47,10 @@ public class DealManager {
             new Card("Mike Meyers", "p", "Mike"),
             new Card("Kool Aid Man", "p", "Aid"),
             new Card("Buzz Lightyear", "p", "Buzz"));
+
+    public static List<Card> getPeopleCards() {
+        return peopleCards;
+    }
 
     private static final List<Card> weaponCards = Arrays.asList(
             new Card("Bowling Ball", "w", "ball"),
@@ -62,13 +75,17 @@ public class DealManager {
     public List<Card> createEnvelope() {
         Card activePeopleCard = peopleCards.get(rand.nextInt(6));
         envelope.add(0, activePeopleCard);
-        peopleCards.remove(activePeopleCard);
+        peopleCards.remove(peopleCards);
         Card activeWeaponCard = weaponCards.get(rand.nextInt(6));
         envelope.add(1, activeWeaponCard);
-        weaponCards.remove(activeWeaponCard);
+        weaponCards.remove(weaponCards);
         Card activeLocationCard = locationCards.get(rand.nextInt(9));
         envelope.add(2, activeLocationCard);
-        locationCards.remove(activeLocationCard);
+        locationCards.remove(locationCards);
+        return envelope;
+    }
+
+    public List<Card> getEnvelope() {
         return envelope;
     }
 

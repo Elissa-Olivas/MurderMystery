@@ -7,7 +7,8 @@
 </head>
 <body>
 <h1>Player1</h1>
-<p th:text="${name}"></p>
+
+<p th:text="${name} + ': CheckList'"></p>
 <a th:href="${url}" target="_blank" th:text="${url}"></a>
 <div class="player-hand">
     <div class ="row">
@@ -20,6 +21,10 @@
         </div>
     </div>
 </div>
+<button><a href="/suggest">Make a Suggestion</a></button>
+<button><a href="/accuse">Make an Accusation</a></button>
+<button><a href="/computer1">Next Player</a></button>
+
 
 </body>
 </html>

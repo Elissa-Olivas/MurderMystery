@@ -12,18 +12,35 @@
         <span class="logo">Logo</span>
     </div>
     <ul class="navigation">
-        <li class="parent"><a class="link" href="#">Home</a></li>
+        <li class="parent"><a class="link" href="/">Home</a></li>
         <li class="parent"><a class="link" href="#">About</a></li>
     </ul>
 </nav>
     <div id="results"></div>
-    <a href="/accuse.html">Back to form</a>
-<script>
-    const resultsList = document.getElementById('results')
-    new URLSearchParams(window.location.search).forEach( (value,name) => {
-        resultsList.append('${name}: ${value}')
-        resultsList.append(document.createElement('br'))
-    })
+    <a href="/accuse">Back to form</a>
+<script th:inline = "javascript">
+        const resultsList = document.getElementById('results')
+        new URLSearchParams(window.location.search).forEach((value, name) => {
+            resultsList.append('/*[[${name}]]*/: /*[[${value}]]*/')
+            resultsList.append(document.createElement('br'))
+            // var person= document.getElementById("accusePerson")
+            // var resultPerson = person.value;
+            // resultsList.append('/*[[${resultPerson}]]*/')
+        })
 </script>
+<br>
+<br>
+<h2>Envelope- THE MURDER</h2>
+<div class="envelope-answer">
+    <div class ="row">
+        <div class ="item" th:each="displayEnvelope: ${envelopeAnswer}">
+            <div class ="column">
+                <a th:href="${displayEnvelope.picName}">
+                    <img th:src="@{'/images/' + ${displayEnvelope.picName} + '.jpeg'}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

@@ -3,11 +3,13 @@ package com.detroitlabs.MuderMystery.controller;
 
 import com.detroitlabs.MuderMystery.data.DealManager;
 import com.detroitlabs.MuderMystery.data.List;
+import com.detroitlabs.MuderMystery.model.UserInput;
 import com.detroitlabs.MuderMystery.service.ListService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
@@ -19,7 +21,8 @@ public class DeckController {
     @Autowired
     DealManager dealer = new DealManager();
 
-        @RequestMapping("/")
+
+    @RequestMapping("/")
     public String displayHomepage(ModelMap modelMap){
         dealer.clearDeck();
         dealer.createDeck();
@@ -88,15 +91,17 @@ public class DeckController {
 
 
     @RequestMapping("/accuse")
-    public String displayAccusePage (ModelMap modelMap) {
-        modelMap.put("checkEnvelopeMatch", dealer.checkEnvelopeMatch());
+    public String displayAccusePage () {
+//        modelMap.put("checkEnvelopeMatch", dealer.checkEnvelopeMatch());
         return "accuse";
     }
 
 
     @RequestMapping("/results")
     public String displayResults (ModelMap modelMap) {
-        modelMap.put("checkEnvelopeMatch", dealer.checkEnvelopeMatch());
+//        modelMap.put("guessPeopleCard", dealer.getUserInput().getGuessPeopleCard());
+        modelMap.put("envelopeAnswer", dealer.getEnvelope());
+//        modelMap.put("checkEnvelopeMatch", dealer.checkEnvelopeMatch());
         return "results";
     }
 
