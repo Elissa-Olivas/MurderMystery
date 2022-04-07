@@ -73,7 +73,7 @@ public class DealManager {
     }
 
     //create deck
-    public DealManager() {          //adds all the cards from each list
+    public void createDeck() {          //adds all the cards from each list
         allCards.addAll(peopleCards);
         allCards.addAll(weaponCards);
         allCards.addAll(locationCards);
