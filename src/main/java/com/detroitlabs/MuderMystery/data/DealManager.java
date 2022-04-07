@@ -137,11 +137,12 @@ public class DealManager {
     }
 
     public String checkEnvelopeMatch() {               //method to match accuse with envelope
-        if ((userInput.getGuessPeopleCard().equals(envelope.get(0)) && (userInput.getGuessWeaponCard().equals(envelope.get(1))
-                && (userInput.getGuessLocationCard().equals(envelope.get(2))))))
+        if ((userInput.getGuessPeopleCard().equals(envelope.get(0))) && (userInput.getGuessWeaponCard().equals(envelope.get(1)))
+                && (userInput.getGuessLocationCard().equals(envelope.get(2))))
             return "Match found, You Win";
         else
             return "No Match Found, You Lose";
+
     }
 
     //method to roll die

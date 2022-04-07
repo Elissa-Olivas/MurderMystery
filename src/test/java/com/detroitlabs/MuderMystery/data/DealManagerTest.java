@@ -8,6 +8,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DealManagerTest {
+    @Test
+    void shoulCheckEnvelopeMatch() {
+        DealManager testCheckEnvelope = new DealManager();
+
+        String result = testCheckEnvelope.checkEnvelopeMatch();
+
+        assertEquals(result, "No Match Found, You Lose");
+    }
 
 //
 //    @Test

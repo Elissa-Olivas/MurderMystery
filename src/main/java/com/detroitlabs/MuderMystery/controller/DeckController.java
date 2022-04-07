@@ -20,11 +20,11 @@ public class DeckController {
     DealManager dealer = new DealManager();
 
         @RequestMapping("/")
-    public String displayHomepage(){
+    public String displayHomepage(ModelMap modelMap){
         dealer.clearDeck();
-        dealer.createEnvelope();
         dealer.createDeck();
         dealer.dealHands();
+        modelMap.put("envelope", dealer.createEnvelope());
         return "home";
     }
     @RequestMapping("/player1")

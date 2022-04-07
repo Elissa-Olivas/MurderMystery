@@ -9,6 +9,17 @@
 <h1>Player1</h1>
 <p th:text="${name}"></p>
 <a th:href="${url}" target="_blank" th:text="${url}"></a>
+<div class="player-hand">
+    <div class ="row">
+        <div class ="item" th:each="displayPlayerHand: ${player1Hand}">
+            <div class ="column">
+                <a th:href="${displayPlayerHand.picName}">
+                <img th:src="@{'/images/' + ${displayPlayerHand.picName} + '.jpeg'}"/>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
