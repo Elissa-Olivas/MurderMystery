@@ -131,6 +131,7 @@ public class DealManager {
         player1.clear();
         computer1.clear();
         computer2.clear();
+        envelope.clear();
     }
 
 
